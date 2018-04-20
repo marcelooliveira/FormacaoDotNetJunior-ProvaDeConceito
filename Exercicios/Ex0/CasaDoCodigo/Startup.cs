@@ -42,12 +42,8 @@ namespace CasaDoCodigo
         }
 
 
-
-
-
         // Este método é chamado pelo runtime.
         // Use este método para configurar o pipeline de requisições HTTP.
-        ///<image url="$(ItemDir)\pipeline.png"/>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
             IServiceProvider serviceProvider)
         {
@@ -71,9 +67,7 @@ namespace CasaDoCodigo
                     template: "{controller=Pedido}/{action=Carrossel}/{codigo?}");
             });
 
-            ///<image url="$(ItemDir)\middlewares.png"/>
             serviceProvider.GetService<IDataService>().InicializaDB();
-
         }
     }
 
