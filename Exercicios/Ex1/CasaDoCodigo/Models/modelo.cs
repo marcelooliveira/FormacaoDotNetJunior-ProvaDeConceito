@@ -14,6 +14,23 @@ namespace CasaDoCodigo.Models
         public int Id { get; protected set; }
     }
 
+    public class Categoria : BaseModel
+    {
+        public Categoria() { }
+        [Required]
+        public string Nome { get; private set; }
+    }
+
+    public class Subcategoria : BaseModel
+    {
+        public Subcategoria() { }
+
+        [Required]
+        public Categoria Categoria { get; private set; }
+        [Required]
+        public string Nome { get; private set; }
+    }
+
     public class Produto : BaseModel
     {
         public Produto()
@@ -21,6 +38,8 @@ namespace CasaDoCodigo.Models
 
         }
 
+        [Required]
+        public Subcategoria Subcategoria { get; private set; }
         [Required]
         public string Codigo { get; private set; }
         [Required]
@@ -80,7 +99,7 @@ namespace CasaDoCodigo.Models
 
     [DataContract]
     public class ItemPedido : BaseModel
-    {   
+    {
         [Required]
         [DataMember]
         public Pedido Pedido { get; private set; }

@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{B5C7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Desktop\ConsoleApp1\ConsoleApp1.csproj", "{9CFECDF8-C09D-4278-B4D9-143575A129D8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.Ex1", "Exercicios\Ex1\CasaDoCodigo\CasaDoCodigo.Ex1.csproj", "{F372A04D-68E2-4065-8185-B8127D1F1309}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{9CFECDF8-C09D-4278-B4D9-143575A129D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CFECDF8-C09D-4278-B4D9-143575A129D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CFECDF8-C09D-4278-B4D9-143575A129D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F372A04D-68E2-4065-8185-B8127D1F1309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F372A04D-68E2-4065-8185-B8127D1F1309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F372A04D-68E2-4065-8185-B8127D1F1309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F372A04D-68E2-4065-8185-B8127D1F1309}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{BC2DC030-5A4E-43AF-8A0D-1496DB28D4C7} = {ADD33DEE-0FC0-4A72-B90C-633127E9E77D}
 		{A7D5DD11-5F09-4028-8AA7-16945AF893DC} = {70253032-7F30-425A-820D-F18C96DD904E}
 		{9CFECDF8-C09D-4278-B4D9-143575A129D8} = {B5C76F76-54ED-4B57-B01D-2272E8E0634D}
+		{F372A04D-68E2-4065-8185-B8127D1F1309} = {BC2DC030-5A4E-43AF-8A0D-1496DB28D4C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FED210B-3460-45CF-9C4D-877F0D63546F}
