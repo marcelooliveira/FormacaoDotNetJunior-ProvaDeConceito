@@ -25,7 +25,10 @@ namespace CasaDoCodigo.Repositories
 
         public IList<Produto> GetProdutos()
         {
-            return dbSet.ToList();
+            return dbSet
+                .Include(prod => prod.Subcategoria)
+                .ThenInclude(sub => sub.Categoria)
+            .ToList();
         }
 
         public void SaveProdutos(List<Livro> livros)

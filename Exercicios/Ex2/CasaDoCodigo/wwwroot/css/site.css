@@ -3,6 +3,11 @@
     padding-bottom: 20px;
 }
 
+h3 {
+    font-weight: bold;
+    color: #f8965d;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
