@@ -17,6 +17,12 @@ namespace CasaDoCodigo.Models
     public class Categoria : BaseModel
     {
         public Categoria() { }
+
+        public Categoria(string nome)
+        {
+            Nome = nome;
+        }
+
         [Required]
         public string Nome { get; private set; }
     }
@@ -24,6 +30,12 @@ namespace CasaDoCodigo.Models
     public class Subcategoria : BaseModel
     {
         public Subcategoria() { }
+
+        public Subcategoria(Categoria categoria, string nome)
+        {
+            Categoria = categoria;
+            Nome = nome;
+        }
 
         [Required]
         public Categoria Categoria { get; private set; }
@@ -47,11 +59,12 @@ namespace CasaDoCodigo.Models
         [Required]
         public decimal Preco { get; private set; }
 
-        public Produto(string codigo, string nome, decimal preco)
+        public Produto(string codigo, string nome, decimal preco, Subcategoria subcategoria)
         {
             this.Codigo = codigo;
             this.Nome = nome;
             this.Preco = preco;
+            this.Subcategoria = subcategoria;
         }
     }
 

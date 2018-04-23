@@ -8,8 +8,8 @@ namespace CasaDoCodigo.Repositories
 {
     public interface ICategoriaRepository
     {
-        int AddCategoria(string categoriaNome);
-        int AddSubcategoria(string categoriaNome, string subcategoriaNome);
+        Categoria AddCategoria(string categoriaNome);
+        Subcategoria AddSubcategoria(string categoriaNome, string subcategoriaNome);
     }
 
     public class CategoriaRepository : BaseRepository<Categoria>, ICategoriaRepository
@@ -18,22 +18,23 @@ namespace CasaDoCodigo.Repositories
         {
         }
 
-        public int AddCategoria(string categoriaNome)
+        public Categoria AddCategoria(string categoriaNome)
         {
             var categoriaDB =
                 dbSet
                     .Where(c => c.Nome == categoriaNome)
                     .SingleOrDefault();
 
-            if (categoriaDB != null)
+            if (categoriaDB == null)
             {
+                categoriaDB = new Categoria(categoriaNome);
                 dbSet.Add(categoriaDB);
                 contexto.SaveChanges();
             }
-            return categoriaDB.Id;
+            return categoriaDB;
         }
 
-        public int AddSubcategoria(string categoriaNome, string subcategoriaNome)
+        public Subcategoria AddSubcategoria(string categoriaNome, string subcategoriaNome)
         {
             var categoriaDB =
                 dbSet
@@ -49,15 +50,17 @@ namespace CasaDoCodigo.Repositories
                 contexto.Set<Subcategoria>()
                     .Where(s =>
                     s.Categoria.Id == categoriaDB.Id
-                    && s.Nome == categoriaNome)
+                    && s.Nome == subcategoriaNome)
                     .SingleOrDefault();
 
-            if (subcategoriaDB != null)
+            if (subcategoriaDB == null)
             {
-                contexto.Set<Subcategoria>().Add(new Subcategoria());
+                subcategoriaDB = new Subcategoria(categoriaDB, subcategoriaNome);
+                contexto.Set<Subcategoria>()
+                    .Add(subcategoriaDB);
                 contexto.SaveChanges();
             }
-            return categoriaDB.Id;
+            return subcategoriaDB;
         }
     }
 }
