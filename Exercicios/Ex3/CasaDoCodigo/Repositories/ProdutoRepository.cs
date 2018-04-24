@@ -1,4 +1,5 @@
 ﻿using CasaDoCodigo.Models;
+using CasaDoCodigo.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace CasaDoCodigo.Repositories
     {
         void SaveProdutos(List<Livro> livros);
         IList<Produto> GetProdutos();
+        BuscaProdutosViewModel GetProdutos(string pesquisa);
     }
 
     public class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
@@ -29,6 +31,22 @@ namespace CasaDoCodigo.Repositories
                 .Include(prod => prod.Subcategoria)
                 .ThenInclude(sub => sub.Categoria)
             .ToList();
+        }
+
+        public BuscaProdutosViewModel GetProdutos(string pesquisa)
+        {
+            IQueryable<Produto> query = dbSet;
+
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                query = query.Where(q => q.Nome.Contains(pesquisa));
+            }
+
+            query = query
+                .Include(prod => prod.Subcategoria)
+                .ThenInclude(sub => sub.Categoria);
+
+            return new BuscaProdutosViewModel(query.ToList(), pesquisa);
         }
 
         public void SaveProdutos(List<Livro> livros)

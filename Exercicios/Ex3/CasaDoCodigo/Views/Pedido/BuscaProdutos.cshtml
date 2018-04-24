@@ -1,17 +1,43 @@
 ﻿@{
     ViewData["Title"] = "Busca de Produtos";
 }
-@model List<Produto>;
+
+@model BuscaProdutosViewModel;
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 pull-right">
+            <h2 class="text-center">Buscar produtos</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <form asp-action="buscaprodutos">
+                        <input type="text" asp-for="@Model.Pesquisa" name="pesquisa"
+                               class="form-control input-lg" 
+                               placeholder="categoria ou produto" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @{
+    var produtos = Model.Produtos;
+
     var categorias =
-        Model
+        produtos
             .Select(m => m.Subcategoria.Categoria)
             .Distinct();
 }
 
 @foreach (var categoria in categorias)
 {
-    var produtosNaCategoria = Model.Where(p => p.Subcategoria.Categoria.Id == categoria.Id);
+    var produtosNaCategoria = produtos.Where(p => p.Subcategoria.Categoria.Id == categoria.Id);
 
     var subcategorias =
         produtosNaCategoria
@@ -20,7 +46,7 @@
 
     foreach (var subcategoria in subcategorias)
     {
-        var produtosNaSubcategoria = 
+        var produtosNaSubcategoria =
             produtosNaCategoria
             .Where(p => p.Subcategoria.Id == subcategoria.Id);
 
