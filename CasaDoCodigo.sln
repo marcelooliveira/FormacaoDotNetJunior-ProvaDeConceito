@@ -33,6 +33,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.Ex3", "Exercicios\Ex3\CasaDoCodigo\CasaDoCodigo.Ex3.csproj", "{8ED6E6DA-F0D9-42B9-9044-300A6A32566D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{6061F36B-F5C6-4931-852C-E402CA9EB4AB}"
+	ProjectSection(SolutionItems) = preProject
+		_Recursos\html\buscaprodutos.html = _Recursos\html\buscaprodutos.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
