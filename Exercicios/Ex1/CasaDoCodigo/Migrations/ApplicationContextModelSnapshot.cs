@@ -113,6 +113,8 @@ namespace CasaDoCodigo.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CategoriaId");
+
                     b.Property<string>("Codigo")
                         .IsRequired();
 
@@ -121,30 +123,11 @@ namespace CasaDoCodigo.Migrations
 
                     b.Property<decimal>("Preco");
 
-                    b.Property<int>("SubcategoriaId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubcategoriaId");
-
-                    b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Models.Subcategoria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CategoriaId");
-
-                    b.Property<string>("Nome")
-                        .IsRequired();
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
-                    b.ToTable("Subcategoria");
+                    b.ToTable("Produto");
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Models.ItemPedido", b =>
@@ -169,14 +152,6 @@ namespace CasaDoCodigo.Migrations
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Models.Produto", b =>
-                {
-                    b.HasOne("CasaDoCodigo.Models.Subcategoria", "Subcategoria")
-                        .WithMany()
-                        .HasForeignKey("SubcategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Models.Subcategoria", b =>
                 {
                     b.HasOne("CasaDoCodigo.Models.Categoria", "Categoria")
                         .WithMany()

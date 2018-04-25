@@ -33,11 +33,10 @@ namespace CasaDoCodigo.Repositories
             foreach (var livro in livros)
             {
                 var categoria = categoriaRepository.AddCategoria(livro.Categoria);
-                var subcategoria = categoriaRepository.AddSubcategoria(livro.Categoria, livro.Subcategoria);
 
                 if (!dbSet.Where(p => p.Codigo == livro.Codigo).Any())
                 {
-                    dbSet.Add(new Produto(livro.Codigo, livro.Nome, livro.Preco, subcategoria));
+                    dbSet.Add(new Produto(livro.Codigo, livro.Nome, livro.Preco, categoria));
                 }
             }
             contexto.SaveChanges();
@@ -49,7 +48,6 @@ namespace CasaDoCodigo.Repositories
         public string Codigo { get; set; }
         public string Nome { get; set; }
         public string Categoria { get; set; }
-        public string Subcategoria { get; set; }
         public decimal Preco { get; set; }
     }
 }

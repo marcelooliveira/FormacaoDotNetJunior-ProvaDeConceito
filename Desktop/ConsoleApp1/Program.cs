@@ -26,12 +26,11 @@ namespace ConsoleApp1
 
                     var src = parts[0];
                     var name = parts[1];
-                    var categoria = parts[2];
-                    var subcategoria = parts[3];
+                    var categoria = parts[2] + " / " + parts[3];
 
                     SaveImage(src, $"large_{id:d3}.jpg", ImageFormat.Jpeg);
 
-                    livros.Add(new Livro(id.ToString("000"), name, categoria, subcategoria, src, 49.90M));
+                    livros.Add(new Livro(id.ToString("000"), name, categoria, src, 49.90M));
 
                     id++;
                 }
@@ -58,20 +57,18 @@ namespace ConsoleApp1
 
     internal class Livro
     {
-        public Livro(string codigo, string name, string categoria, string subcategoria, string src, decimal preco)
+        public Livro(string codigo, string nome, string categoria, string src, decimal preco)
         {
             Codigo = codigo;
-            Name = name;
+            Nome = nome;
             Categoria = categoria;
-            Subcategoria = subcategoria;
             Src = src;
             Preco = preco;
         }
 
         public string Codigo { get; }
-        public string Name { get; }
+        public string Nome { get; }
         public string Categoria { get; }
-        public string Subcategoria { get; }
         public string Src { get; }
         public decimal Preco { get; }
     }
