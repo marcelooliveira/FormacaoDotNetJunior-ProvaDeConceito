@@ -10,7 +10,7 @@ namespace CasaDoCodigo.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "SubcategoriaId",
+                name: "CategoriaId",
                 table: "Produto",
                 nullable: false,
                 defaultValue: 0);
@@ -35,41 +35,16 @@ namespace CasaDoCodigo.Migrations
                     table.PrimaryKey("PK_Categoria", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Subcategoria",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoriaId = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subcategoria", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Subcategoria_Categoria_CategoriaId",
-                        column: x => x.CategoriaId,
-                        principalTable: "Categoria",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_Produto_SubcategoriaId",
+                name: "IX_Produto_CategoriaId",
                 table: "Produto",
-                column: "SubcategoriaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subcategoria_CategoriaId",
-                table: "Subcategoria",
                 column: "CategoriaId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Produto_Subcategoria_SubcategoriaId",
+                name: "FK_Produto_Categoria_CategoriaId",
                 table: "Produto",
-                column: "SubcategoriaId",
-                principalTable: "Subcategoria",
+                column: "CategoriaId",
+                principalTable: "Categoria",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -77,21 +52,18 @@ namespace CasaDoCodigo.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Produto_Subcategoria_SubcategoriaId",
+                name: "FK_Produto_Categoria_CategoriaId",
                 table: "Produto");
-
-            migrationBuilder.DropTable(
-                name: "Subcategoria");
 
             migrationBuilder.DropTable(
                 name: "Categoria");
 
             migrationBuilder.DropIndex(
-                name: "IX_Produto_SubcategoriaId",
+                name: "IX_Produto_CategoriaId",
                 table: "Produto");
 
             migrationBuilder.DropColumn(
-                name: "SubcategoriaId",
+                name: "CategoriaId",
                 table: "Produto");
 
             migrationBuilder.AlterColumn<string>(
