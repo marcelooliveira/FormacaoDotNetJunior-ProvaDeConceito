@@ -28,8 +28,7 @@ namespace CasaDoCodigo.Repositories
         public IList<Produto> GetProdutos()
         {
             return dbSet
-                .Include(prod => prod.Subcategoria)
-                .ThenInclude(sub => sub.Categoria)
+                .Include(prod => prod.Categoria)
             .ToList();
         }
 
@@ -43,8 +42,7 @@ namespace CasaDoCodigo.Repositories
             }
 
             query = query
-                .Include(prod => prod.Subcategoria)
-                .ThenInclude(sub => sub.Categoria);
+                .Include(prod => prod.Categoria);
 
             return new BuscaProdutosViewModel(query.ToList(), pesquisa);
         }
@@ -54,11 +52,10 @@ namespace CasaDoCodigo.Repositories
             foreach (var livro in livros)
             {
                 var categoria = categoriaRepository.AddCategoria(livro.Categoria);
-                var subcategoria = categoriaRepository.AddSubcategoria(livro.Categoria, livro.Subcategoria);
 
                 if (!dbSet.Where(p => p.Codigo == livro.Codigo).Any())
                 {
-                    dbSet.Add(new Produto(livro.Codigo, livro.Nome, livro.Preco, subcategoria));
+                    dbSet.Add(new Produto(livro.Codigo, livro.Nome, livro.Preco, categoria));
                 }
             }
             contexto.SaveChanges();

@@ -9,7 +9,6 @@ namespace CasaDoCodigo.Repositories
     public interface ICategoriaRepository
     {
         Categoria AddCategoria(string categoriaNome);
-        Subcategoria AddSubcategoria(string categoriaNome, string subcategoriaNome);
     }
 
     public class CategoriaRepository : BaseRepository<Categoria>, ICategoriaRepository
@@ -34,33 +33,5 @@ namespace CasaDoCodigo.Repositories
             return categoriaDB;
         }
 
-        public Subcategoria AddSubcategoria(string categoriaNome, string subcategoriaNome)
-        {
-            var categoriaDB =
-                dbSet
-                    .Where(c => c.Nome == categoriaNome)
-                    .SingleOrDefault();
-
-            if (categoriaDB == null)
-            {
-                throw new ArgumentException("Categoria não encontrada");
-            }
-
-            var subcategoriaDB =
-                contexto.Set<Subcategoria>()
-                    .Where(s =>
-                    s.Categoria.Id == categoriaDB.Id
-                    && s.Nome == subcategoriaNome)
-                    .SingleOrDefault();
-
-            if (subcategoriaDB == null)
-            {
-                subcategoriaDB = new Subcategoria(categoriaDB, subcategoriaNome);
-                contexto.Set<Subcategoria>()
-                    .Add(subcategoriaDB);
-                contexto.SaveChanges();
-            }
-            return subcategoriaDB;
-        }
     }
 }
