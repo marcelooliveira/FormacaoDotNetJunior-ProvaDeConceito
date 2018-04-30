@@ -1,0 +1,128 @@
+<Project>
+  <Name>Formação .NET Júnior</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>ClassLibrary1.dll</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Categoria</Name>
+        <Access>Public</Access>
+        <Location left="29" top="255" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public String Nome { get; private set; }</Member>
+        <Member type="Constructor">public Categoria()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Produto</Name>
+        <Access>Public</Access>
+        <Location left="29" top="48" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Categoria Categoria { get; private set; }</Member>
+        <Member type="Property">public String Codigo { get; private set; }</Member>
+        <Member type="Property">public String Nome { get; private set; }</Member>
+        <Member type="Property">public Decimal Preco { get; private set; }</Member>
+        <Member type="Constructor">public Produto()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Cadastro</Name>
+        <Access>Public</Access>
+        <Location left="467" top="118" />
+        <Size width="162" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public virtual Pedido Pedido { get; set; }</Member>
+        <Member type="Property">public String Nome { get; set; }</Member>
+        <Member type="Property">public String Email { get; set; }</Member>
+        <Member type="Property">public String Telefone { get; set; }</Member>
+        <Member type="Property">public String Endereco { get; set; }</Member>
+        <Member type="Property">public String Complemento { get; set; }</Member>
+        <Member type="Property">public String Bairro { get; set; }</Member>
+        <Member type="Property">public String Municipio { get; set; }</Member>
+        <Member type="Property">public String UF { get; set; }</Member>
+        <Member type="Property">public String CEP { get; set; }</Member>
+        <Member type="Constructor">public Cadastro()</Member>
+        <Member type="Method">internal Void Update(Cadastro novoCadastro)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ItemPedido</Name>
+        <Access>Public</Access>
+        <Location left="259" top="48" />
+        <Size width="162" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Pedido Pedido { get; private set; }</Member>
+        <Member type="Property">public Produto Produto { get; private set; }</Member>
+        <Member type="Property">public Int32 Quantidade { get; private set; }</Member>
+        <Member type="Property">public Decimal PrecoUnitario { get; private set; }</Member>
+        <Member type="Property">public Decimal Subtotal { get; }</Member>
+        <Member type="Constructor">public ItemPedido()</Member>
+        <Member type="Method">internal Void AtualizaQuantidade(Int32 quantidade)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Pedido</Name>
+        <Access>Public</Access>
+        <Location left="259" top="310" />
+        <Size width="162" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public List&lt;ItemPedido&gt; Itens { get; private set; }</Member>
+        <Member type="Property">public virtual Cadastro Cadastro { get; private set; }</Member>
+        <Member type="Constructor">public Pedido()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>216</X>
+          <Y>188</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>234</X>
+          <Y>124</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>216</X>
+          <Y>164</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>447</X>
+          <Y>358</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
