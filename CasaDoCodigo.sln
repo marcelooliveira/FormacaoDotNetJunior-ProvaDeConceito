@@ -37,6 +37,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{6061F36B-F
 		_Recursos\html\buscaprodutos.html = _Recursos\html\buscaprodutos.html
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC5", "MVC5", "{4B263AB1-D51B-4739-A767-41732492D8AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasaDoCodigo", "CasaDoCodigo\CasaDoCodigo.csproj", "{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,10 @@ Global
 		{8ED6E6DA-F0D9-42B9-9044-300A6A32566D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED6E6DA-F0D9-42B9-9044-300A6A32566D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED6E6DA-F0D9-42B9-9044-300A6A32566D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +87,7 @@ Global
 		{374D19EC-92EE-441F-A22A-F1428F297550} = {ADD33DEE-0FC0-4A72-B90C-633127E9E77D}
 		{8ED6E6DA-F0D9-42B9-9044-300A6A32566D} = {374D19EC-92EE-441F-A22A-F1428F297550}
 		{6061F36B-F5C6-4931-852C-E402CA9EB4AB} = {70253032-7F30-425A-820D-F18C96DD904E}
+		{0E4DA269-7DDB-4C44-91C0-5DB9E2CFC8F2} = {4B263AB1-D51B-4739-A767-41732492D8AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FED210B-3460-45CF-9C4D-877F0D63546F}
