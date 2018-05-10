@@ -201,9 +201,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IDataService.cs" />
-    <Compile Include="Migrations\201805092132089_Inicial.cs" />
-    <Compile Include="Migrations\201805092132089_Inicial.Designer.cs">
-      <DependentUpon>201805092132089_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201805101353136_Inicial.cs" />
+    <Compile Include="Migrations\201805101353136_Inicial.Designer.cs">
+      <DependentUpon>201805101353136_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101526266_Validacoes.cs" />
+    <Compile Include="Migrations\201805101526266_Validacoes.Designer.cs">
+      <DependentUpon>201805101526266_Validacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
@@ -470,8 +474,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805092132089_Inicial.resx">
-      <DependentUpon>201805092132089_Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805101353136_Inicial.resx">
+      <DependentUpon>201805101353136_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101526266_Validacoes.resx">
+      <DependentUpon>201805101526266_Validacoes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,19 +18,25 @@ namespace CasaDoCodigo
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Produto>().HasKey(t => t.Id);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
-            modelBuilder.Entity<Pedido>().HasMany(t => t.Itens).WithRequired(t => t.Pedido);
-            modelBuilder.Entity<ItemPedido>().HasKey(t => t.Id);
-            modelBuilder.Entity<ItemPedido>().HasRequired(t => t.Pedido);
-            modelBuilder.Entity<ItemPedido>().HasRequired(t => t.Produto);
+            var produtoEntity = modelBuilder.Entity<Produto>();
+            produtoEntity.HasKey(t => t.Id);
 
-            modelBuilder.Entity<Cadastro>().HasKey(t => t.Id);
-            modelBuilder.Entity<Cadastro>()
+            var pedidoEntity = modelBuilder.Entity<Pedido>();
+            pedidoEntity.HasKey(t => t.Id);
+            pedidoEntity.HasMany(t => t.Itens).WithRequired(t => t.Pedido);
+
+            var itemPedidoEntity = modelBuilder.Entity<ItemPedido>();
+            itemPedidoEntity.HasKey(t => t.Id);
+            itemPedidoEntity.HasRequired(t => t.Pedido);
+            itemPedidoEntity.HasRequired(t => t.Produto);
+
+            var cadastroEntity = modelBuilder.Entity<Cadastro>();
+            cadastroEntity.HasKey(t => t.Id);
+            cadastroEntity
                 .HasOptional(t => t.Pedido)
                 .WithOptionalDependent();
-            //modelBuilder.Entity<Cadastro>().HasRequired(t => t.Pedido);
         }
     }
 }

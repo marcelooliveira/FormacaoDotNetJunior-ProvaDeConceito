@@ -8,7 +8,7 @@ namespace CasaDoCodigo.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Produtoes",
+                "dbo.Produto",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -19,18 +19,18 @@ namespace CasaDoCodigo.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Pedidoes",
+                "dbo.Pedido",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Cadastro_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cadastroes", t => t.Cadastro_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Cadastro", t => t.Cadastro_Id, cascadeDelete: true)
                 .Index(t => t.Cadastro_Id);
             
             CreateTable(
-                "dbo.Cadastroes",
+                "dbo.Cadastro",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -46,11 +46,11 @@ namespace CasaDoCodigo.Migrations
                         Pedido_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pedidoes", t => t.Pedido_Id)
+                .ForeignKey("dbo.Pedido", t => t.Pedido_Id)
                 .Index(t => t.Pedido_Id);
             
             CreateTable(
-                "dbo.ItemPedidoes",
+                "dbo.ItemPedido",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -60,8 +60,8 @@ namespace CasaDoCodigo.Migrations
                         Pedido_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Produtoes", t => t.Produto_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Pedidoes", t => t.Pedido_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Produto", t => t.Produto_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Pedido", t => t.Pedido_Id, cascadeDelete: true)
                 .Index(t => t.Produto_Id)
                 .Index(t => t.Pedido_Id);
             
@@ -69,18 +69,18 @@ namespace CasaDoCodigo.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.ItemPedidoes", "Pedido_Id", "dbo.Pedidoes");
-            DropForeignKey("dbo.ItemPedidoes", "Produto_Id", "dbo.Produtoes");
-            DropForeignKey("dbo.Pedidoes", "Cadastro_Id", "dbo.Cadastroes");
-            DropForeignKey("dbo.Cadastroes", "Pedido_Id", "dbo.Pedidoes");
-            DropIndex("dbo.ItemPedidoes", new[] { "Pedido_Id" });
-            DropIndex("dbo.ItemPedidoes", new[] { "Produto_Id" });
-            DropIndex("dbo.Cadastroes", new[] { "Pedido_Id" });
-            DropIndex("dbo.Pedidoes", new[] { "Cadastro_Id" });
-            DropTable("dbo.ItemPedidoes");
-            DropTable("dbo.Cadastroes");
-            DropTable("dbo.Pedidoes");
-            DropTable("dbo.Produtoes");
+            DropForeignKey("dbo.ItemPedido", "Pedido_Id", "dbo.Pedido");
+            DropForeignKey("dbo.ItemPedido", "Produto_Id", "dbo.Produto");
+            DropForeignKey("dbo.Pedido", "Cadastro_Id", "dbo.Cadastro");
+            DropForeignKey("dbo.Cadastro", "Pedido_Id", "dbo.Pedido");
+            DropIndex("dbo.ItemPedido", new[] { "Pedido_Id" });
+            DropIndex("dbo.ItemPedido", new[] { "Produto_Id" });
+            DropIndex("dbo.Cadastro", new[] { "Pedido_Id" });
+            DropIndex("dbo.Pedido", new[] { "Cadastro_Id" });
+            DropTable("dbo.ItemPedido");
+            DropTable("dbo.Cadastro");
+            DropTable("dbo.Pedido");
+            DropTable("dbo.Produto");
         }
     }
 }

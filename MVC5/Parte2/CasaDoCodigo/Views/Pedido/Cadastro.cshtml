@@ -13,49 +13,46 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label" for="nomeCliente">Nome do Cliente</label>
-                    <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente"
-                           asp-for="@Model.Nome">
-                    <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Nome, new { @class = "form-control", id = "nomeCliente", placeholder = "Nome do Cliente" })
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(t => t.Nome)
+                    </span>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email"
-                           asp-for="@Model.Email">
-                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Email, new { @class = "form-control", id = "email", placeholder = "Email" })
+                    <span class="text-danger">
+                        @Html.ValidationMessageFor(t => t.Email)
+                    </span>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="telefone">Telefone</label>
-                    <input type="text" class="form-control" id="telefone" placeholder="Telefone"
-                           asp-for="@Model.Telefone">
-                    <span asp-validation-for="@Model.Telefone" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Telefone, new { @class = "form-control", id = "telefone", placeholder = "Telefone" })
+                    @*<span asp-validation-for="@Model.Telefone" class="text-danger"></span>*@
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label" for="endereco">Endereço</label>
-                    <input type="text" class="form-control" id="endereco" placeholder="Endereço"
-                           asp-for="@Model.Endereco">
-                    <span asp-validation-for="@Model.Endereco" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Endereco, new { @class = "form-control", id = "endereco", placeholder = "Endereço" })
+                    @*<span asp-validation-for="@Model.Endereco" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="complemento">Complemento</label>
-                    <input type="text" class="form-control" id="complemento" placeholder="Complemento"
-                           asp-for="@Model.Complemento">
-                    <span asp-validation-for="@Model.Complemento" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Complemento, new { @class = "form-control", id = "complemento", placeholder = "Complemento" })
+                    @*<span asp-validation-for="@Model.Complemento" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="bairro">Bairro</label>
-                    <input type="text" class="form-control" id="bairro" placeholder="Bairro"
-                           asp-for="@Model.Bairro">
-                    <span asp-validation-for="@Model.Bairro" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Bairro, new { @class = "form-control", id = "bairro", placeholder = "Bairro" })
+                    @*<span asp-validation-for="@Model.Bairro" class="text-danger"></span>*@
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label" for="municipio">Município</label>
-                    <input type="text" class="form-control" id="municipio" placeholder="Município"
-                           asp-for="@Model.Municipio">
-                    <span asp-validation-for="@Model.Municipio" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.Municipio, new { @class = "form-control", id = "municipio", placeholder = "Municipio" })
+                    @*<span asp-validation-for="@Model.Municipio" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="UF">UF</label>
@@ -90,13 +87,12 @@
                         <option value="SE">Sergipe</option>
                         <option value="TO">Tocantins</option>
                     </select>
-                    <span asp-validation-for="@Model.UF" class="text-danger"></span>
+                    @*<span asp-validation-for="@Model.UF" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="cep">CEP</label>
-                    <input type="text" class="form-control" id="cep" placeholder="CEP"
-                           asp-for="@Model.CEP">
-                    <span asp-validation-for="@Model.CEP" class="text-danger"></span>
+                    @Html.TextBoxFor(t => t.CEP, new { @class = "form-control", id = "cep", placeholder = "CEP" })
+                    @*<span asp-validation-for="@Model.CEP" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     @Html.ActionLink("Continuar Comprando", "Carrossel", "Pedido", null, new { @class = "btn btn-success" })
