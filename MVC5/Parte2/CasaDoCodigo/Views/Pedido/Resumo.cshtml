@@ -1,7 +1,9 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Resumo";
+}
+
 @model CasaDoCodigo.Models.Pedido
 <h3>Resumo do Pedido</h3>
-
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="row">
@@ -33,7 +35,6 @@
                 <h3>Quantidade</h3>
             </div>
         </div>
-
         @foreach (var item in Model.Itens)
         {
 
@@ -47,6 +48,5 @@
                 </div>
             </div>
         }
-
     </div>
 </div>
