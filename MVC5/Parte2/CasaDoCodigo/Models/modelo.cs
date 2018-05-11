@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -41,8 +42,9 @@ namespace CasaDoCodigo.Models
         public Cadastro()
         {
         }
-        [IgnoreDataMember]
-        public virtual Pedido Pedido { get; set; }
+
+        public Pedido Pedido { get; set; }
+
         [MinLength(5, ErrorMessage = "Nome deve ter no mínimo 5 caracteres")]
         [MaxLength(50, ErrorMessage = "Nome deve ter no máximo 50 caracteres")]
         [Required(ErrorMessage = "Nome é obrigatório")]
@@ -119,7 +121,6 @@ namespace CasaDoCodigo.Models
     {
         public Pedido()
         {
-            Cadastro = new Cadastro();
         }
 
         public Pedido(Cadastro cadastro)
@@ -128,7 +129,7 @@ namespace CasaDoCodigo.Models
         }
         [IgnoreDataMember]
         public List<ItemPedido> Itens { get; private set; } = new List<ItemPedido>();
-        [Required]
-        public virtual Cadastro Cadastro { get; private set; }
+        
+        public virtual Cadastro Cadastro { get; set; }
     }
 }
