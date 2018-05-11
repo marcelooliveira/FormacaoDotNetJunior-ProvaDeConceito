@@ -24,7 +24,11 @@ namespace CasaDoCodigo.Repositories
 
             if (cadastroDB == null)
             {
-                throw new ArgumentNullException("cadastro");
+                cadastroDB = new Cadastro
+                {
+                    Id = cadastroId
+                };
+                dbSet.Add(cadastroDB);
             }
 
             cadastroDB.Update(novoCadastro);

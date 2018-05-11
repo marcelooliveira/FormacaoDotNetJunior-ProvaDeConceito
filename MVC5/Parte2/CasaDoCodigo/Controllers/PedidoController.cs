@@ -63,6 +63,11 @@ namespace CasaDoCodigo.Controllers
                 return RedirectToAction("Carrossel");
             }
 
+            if (pedido.Cadastro == null)
+            {
+                pedido.Cadastro = new Cadastro();
+            }
+
             return View(pedido.Cadastro);
         }
 

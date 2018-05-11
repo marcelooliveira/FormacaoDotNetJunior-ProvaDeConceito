@@ -2,6 +2,7 @@
 using CasaDoCodigo.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -119,8 +120,8 @@ namespace CasaDoCodigo.Repositories
         public Pedido UpdateCadastro(Cadastro cadastro)
         {
             var pedido = GetPedido();
-            cadastroRepository.Update(pedido.Cadastro.Id, cadastro);
-            return pedido;
+            cadastroRepository.Update(pedido.Id, cadastro);
+            return GetPedido();
         }
     }
 }

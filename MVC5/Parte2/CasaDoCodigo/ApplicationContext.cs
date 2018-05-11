@@ -20,6 +20,9 @@ namespace CasaDoCodigo
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+            var cadastroEntity = modelBuilder.Entity<Cadastro>();
+            cadastroEntity.HasKey(t => t.Id);
+            
             var produtoEntity = modelBuilder.Entity<Produto>();
             produtoEntity.HasKey(t => t.Id);
 
@@ -27,16 +30,14 @@ namespace CasaDoCodigo
             pedidoEntity.HasKey(t => t.Id);
             pedidoEntity.HasMany(t => t.Itens).WithRequired(t => t.Pedido);
 
+            pedidoEntity
+                .HasOptional(t => t.Cadastro)
+                .WithRequired(t => t.Pedido);
+
             var itemPedidoEntity = modelBuilder.Entity<ItemPedido>();
             itemPedidoEntity.HasKey(t => t.Id);
             itemPedidoEntity.HasRequired(t => t.Pedido);
             itemPedidoEntity.HasRequired(t => t.Produto);
-
-            var cadastroEntity = modelBuilder.Entity<Cadastro>();
-            cadastroEntity.HasKey(t => t.Id);
-            cadastroEntity
-                .HasOptional(t => t.Pedido)
-                .WithOptionalDependent();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CasaDoCodigo.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805101353136_Inicial"; }
+            get { return "201805111444063_Inicial"; }
         }
         
         string IMigrationMetadata.Source
