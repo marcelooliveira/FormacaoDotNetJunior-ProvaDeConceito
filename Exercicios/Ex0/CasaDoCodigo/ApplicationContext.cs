@@ -18,18 +18,22 @@ namespace CasaDoCodigo
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Produto>().HasKey(t => t.Id);
+            var cadastroEntity = modelBuilder.Entity<Cadastro>();
+            cadastroEntity.HasKey(t => t.Id);
+            cadastroEntity.HasOne(t => t.Pedido);
 
-            modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
-            modelBuilder.Entity<Pedido>().HasMany(t => t.Itens).WithOne(t => t.Pedido);
-            modelBuilder.Entity<Pedido>().HasOne(t => t.Cadastro).WithOne(t => t.Pedido).IsRequired();
+            var produtoEntity = modelBuilder.Entity<Produto>();
+            produtoEntity.HasKey(t => t.Id);
 
-            modelBuilder.Entity<ItemPedido>().HasKey(t => t.Id);
-            modelBuilder.Entity<ItemPedido>().HasOne(t => t.Pedido);
-            modelBuilder.Entity<ItemPedido>().HasOne(t => t.Produto);
+            var pedidoEntity = modelBuilder.Entity<Pedido>();
+            pedidoEntity.HasKey(t => t.Id);
+            pedidoEntity.HasMany(t => t.Itens).WithOne(t => t.Pedido);
+            pedidoEntity.HasOne(t => t.Cadastro).WithOne(t => t.Pedido).IsRequired();
 
-            modelBuilder.Entity<Cadastro>().HasKey(t => t.Id);
-            modelBuilder.Entity<Cadastro>().HasOne(t => t.Pedido);
+            var itemPedidoEntity = modelBuilder.Entity<ItemPedido>();
+            itemPedidoEntity.HasKey(t => t.Id);
+            itemPedidoEntity.HasOne(t => t.Pedido);
+            itemPedidoEntity.HasOne(t => t.Produto);
         }
     }
 }
