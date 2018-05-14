@@ -92,30 +92,7 @@ namespace CasaDoCodigo.Controllers
                 Quantidade = itemPedido.Quantidade
             });
 
-            var resposta = new
-            {
-                ItemPedido = new
-                {
-                    resultado.ItemPedido.Id,
-                    resultado.ItemPedido.Quantidade,
-                    resultado.ItemPedido.PrecoUnitario,
-                    resultado.ItemPedido.Subtotal
-                },
-                CarrinhoViewModel = new
-                {
-                    Itens = resultado.CarrinhoViewModel.Itens.Select(i =>
-                    new
-                    {
-                        resultado.ItemPedido.Id,
-                        resultado.ItemPedido.Quantidade,
-                        resultado.ItemPedido.PrecoUnitario,
-                        resultado.ItemPedido.Subtotal
-                    }),
-                    resultado.CarrinhoViewModel.Total
-                }
-            };
-
-            return Json(resposta);
+            return Json(resultado);
         }
 
         [DataContract]

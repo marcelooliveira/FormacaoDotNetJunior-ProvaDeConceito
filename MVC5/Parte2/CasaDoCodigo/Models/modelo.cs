@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -5,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace CasaDoCodigo.Models
 {
@@ -84,10 +86,9 @@ namespace CasaDoCodigo.Models
     public class ItemPedido : BaseModel
     {   
         [Required]
-        [IgnoreDataMember]
+        [ScriptIgnore]
         public Pedido Pedido { get; set; }
         [Required]
-        [IgnoreDataMember]
         public Produto Produto { get; set; }
         [Required]
         [DataMember]
@@ -127,7 +128,7 @@ namespace CasaDoCodigo.Models
         {
             Cadastro = cadastro;
         }
-        [IgnoreDataMember]
+        [ScriptIgnore]
         public List<ItemPedido> Itens { get; private set; } = new List<ItemPedido>();
         
         public virtual Cadastro Cadastro { get; set; }
