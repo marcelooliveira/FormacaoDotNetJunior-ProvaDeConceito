@@ -84,29 +84,10 @@ namespace CasaDoCodigo.Controllers
 
         [System.Web.Mvc.HttpPost]
         [ValidateHttpAntiForgeryToken]
-        public JsonResult UpdateQuantidade([FromBody]ItemPedidoDTO itemPedido)
+        public JsonResult UpdateQuantidade([FromBody]ItemPedido itemPedido)
         {
-            UpdateQuantidadeResponse resultado = pedidoRepository.UpdateQuantidade(new ItemPedido
-            {
-                Id = itemPedido.Id,
-                Quantidade = itemPedido.Quantidade
-            });
-
+            UpdateQuantidadeResponse resultado = pedidoRepository.UpdateQuantidade(itemPedido);
             return Json(resultado);
-        }
-
-        [DataContract]
-        public class ItemPedidoDTO
-        {
-            public ItemPedidoDTO()
-            {
-
-            }
-
-            [DataMember]
-            public int Id { get; set; }
-            [DataMember]
-            public int Quantidade { get; set; }
         }
     }
 }
